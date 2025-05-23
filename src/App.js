@@ -5,6 +5,7 @@ import Goals from './pages/Goals';
 import Workout from './pages/Workout';
 import FoodLog from './pages/FoodLog';
 import Profile from './pages/Profile';
+import WorkoutDetails from './pages/WorkoutDetails'; // ✅ correct import here
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/workout" element={<Workout />} />
           <Route path="/food-log" element={<FoodLog />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/workout/:id" element={<WorkoutDetails />} /> 
         </Routes>
       </div>
     </Router>
