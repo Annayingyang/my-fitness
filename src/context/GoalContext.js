@@ -6,24 +6,40 @@ export function GoalProvider({ children }) {
   const [goals, setGoals] = useState([]);
   const [achievements, setAchievements] = useState([]);
 
-  const addGoal = (goalObj) => {
-    setGoals([...goals, goalObj]);
+  const addGoal = (newGoal) => {
+    if (newGoal.type === 'weight') {
+      const updatedGoals = goals.filter(goal => goal.type !== 'weight');
+      setGoals([...updatedGoals, newGoal]);
+    } else {
+      setGoals([...goals, newGoal]);
+    }
   };
 
-  const markGoalComplete = (index) => {
-    const updated = [...goals];
-    updated[index].completed = true;
+  const markGoalComplete = (goalToComplete) => {
+    const updatedGoals = goals.filter(goal => goal !== goalToComplete);
+    setGoals(updatedGoals);
+    setAchievements([...achievements, goalToComplete]);
+  };
 
-    const achieved = updated[index];
-    setAchievements([...achievements, achieved]);
-    updated.splice(index, 1);
-
-    setGoals(updated);
+  const updateCurrentWeight = (newWeight) => {
+    const updatedGoals = goals.map(goal => {
+      if (goal.type === 'weight') {
+        return { ...goal, current: parseFloat(newWeight) };
+      }
+      return goal;
+    });
+    setGoals(updatedGoals);
   };
 
   return (
     <GoalContext.Provider
-      value={{ goals, addGoal, achievements, markGoalComplete }}
+      value={{
+        goals,
+        addGoal,
+        achievements,
+        markGoalComplete,
+        updateCurrentWeight, 
+      }}
     >
       {children}
     </GoalContext.Provider>
