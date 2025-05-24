@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { GoalContext } from '../context/GoalContext';
 
 function Goals() {
@@ -16,6 +16,7 @@ function Goals() {
     markGoalComplete,
     addGoal,
     updateCurrentWeight,
+    achievements,
   } = useContext(GoalContext);
 
   const handleSubmit = (e) => {
@@ -53,11 +54,15 @@ function Goals() {
             current: parseFloat(currentWeight),
             target: parseFloat(targetWeight),
             completed: false,
+            createdAt: new Date().toISOString(),
+            id: Date.now(),
           }
         : {
             type: 'fitness',
             text: goalText,
             completed: false,
+            createdAt: new Date().toISOString(),
+            id: Date.now(),
           };
 
     addGoal(newGoal);
@@ -69,6 +74,17 @@ function Goals() {
     setSuccess('Goal added successfully!');
     setTimeout(() => setSuccess(''), 2000);
   };
+
+  useEffect(() => {
+    const weightGoal = goals.find(goal => goal.type === 'weight' && !goal.completed);
+
+    if (
+      weightGoal &&
+      parseFloat(weightGoal.current) <= parseFloat(weightGoal.target)
+    ) {
+      markGoalComplete({ ...weightGoal, completed: true, completedAt: new Date().toISOString() });
+    }
+  }, [goals, markGoalComplete]);
 
   return (
     <div>
@@ -132,12 +148,12 @@ function Goals() {
       >
         <div style={{ flex: 1 }}>
           <h2>Weight Goals</h2>
-          {goals.filter((goal) => goal.type === 'weight').length === 0 && (
+          {goals.filter((goal) => goal.type === 'weight' && !goal.completed).length === 0 && (
             <p>No weight goals yet.</p>
           )}
           {goals
-            .filter((goal) => goal.type === 'weight')
-            .map((goal, index) => {
+            .filter((goal) => goal.type === 'weight' && !goal.completed)
+            .map((goal) => {
               const progressPercent = Math.min(
                 ((goal.start - goal.current) / (goal.start - goal.target)) *
                   100,
@@ -146,7 +162,7 @@ function Goals() {
 
               return (
                 <div
-                  key={index}
+                  key={goal.id}
                   style={{
                     border: '1px solid #ccc',
                     padding: '10px',
@@ -194,9 +210,9 @@ function Goals() {
           )}
           {goals
             .filter((goal) => goal.type === 'fitness')
-            .map((goal, index) => (
+            .map((goal) => (
               <div
-                key={index}
+                key={goal.id}
                 style={{
                   border: '1px solid #ccc',
                   padding: '10px',
@@ -206,13 +222,30 @@ function Goals() {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={() => markGoalComplete(goal)}
+                    onChange={() => markGoalComplete({ ...goal, completed: true, completedAt: new Date().toISOString() })}
                   />{' '}
                   {goal.text}
                 </label>
               </div>
             ))}
         </div>
+      </div>
+
+      <div style={{ marginTop: '40px' }}>
+        <h2>Achievements</h2>
+        {achievements.length === 0 && <p>No achievements yet.</p>}
+        <ul>
+          {achievements.map((goal) => (
+            <li key={goal.id}>
+              {goal.type === 'fitness'
+                ? `🏆 ${goal.text}`
+                : `⚖️ Reached ${goal.target}kg`} 
+              {goal.completedAt && (
+                <span style={{ color: 'gray', fontSize: '0.9em' }}> — {new Date(goal.completedAt).toLocaleDateString()}</span>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
