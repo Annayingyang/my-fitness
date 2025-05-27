@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { FoodContext } from '../context/FoodContext';
+import './Foodlog.css';
 
 const defaultFoodDB = {
   bread: 100,
@@ -22,7 +23,6 @@ function FoodLog() {
 
   const { meals, addMeal } = useContext(FoodContext);
 
-  // Load foodDB from localStorage
   useEffect(() => {
     const storedDB = localStorage.getItem('foodDB');
     if (storedDB) {
@@ -65,7 +65,7 @@ function FoodLog() {
       name: mealName,
       calories: parseInt(calories),
       mealTime: mealTime,
-      date: new Date().toISOString().split('T')[0],
+      date: new Date().toLocaleDateString('en-CA'),
       createdAt: new Date().toISOString(),
       id: Date.now()
     });
@@ -90,7 +90,7 @@ function FoodLog() {
   const totalMeals = Object.values(selectedMeals).flat().length;
 
   return (
-    <div>
+    <div className="foodlog-container">
       <h1>Food Log</h1>
 
       <button onClick={() => setShowForm(!showForm)}>
@@ -98,7 +98,7 @@ function FoodLog() {
       </button>
 
       {showForm && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-card">
           <label htmlFor="mealTime">Meal Type:</label>
           <select id="mealTime" value={mealTime} onChange={(e) => setMealTime(e.target.value)}>
             <option value="breakfast">Breakfast</option>
@@ -123,25 +123,29 @@ function FoodLog() {
         </form>
       )}
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
       <h2>Nutrition Breakdown</h2>
-      <p>Total Meals: {totalMeals}</p>
-      <p>Total Calories: {totalCalories} kcal</p>
+      <div className="section-card nutrition-summary">
+        <p>Total Meals: {totalMeals}</p>
+        <p>Total Calories: {totalCalories} kcal</p>
+      </div>
 
       <h2>Food History</h2>
-      <label htmlFor="select-date">Select Date: </label>
-      <input
-        id="select-date"
-        type="date"
-        value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
-      />
+      <div className="section-card date-picker">
+        <label htmlFor="select-date">Select Date: </label>
+        <input
+          id="select-date"
+          type="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+        />
+      </div>
 
       {loading ? (
         <p>Loading food history...</p>
       ) : (
-        <div style={{ marginBottom: '20px' }}>
+        <div className="section-card meal-block">
           <h3>{selectedDate}</h3>
           {['breakfast', 'lunch', 'dinner', 'snack'].map((type) => (
             selectedMeals[type].length > 0 && (
@@ -151,7 +155,7 @@ function FoodLog() {
                   {selectedMeals[type].map((meal) => (
                     <li key={meal.id}>
                       {meal.name} — {meal.calories} kcal
-                      <span style={{ color: 'gray', fontSize: '0.8em' }}> 
+                      <span>
                         ({new Date(meal.createdAt).toLocaleTimeString()})
                       </span>
                     </li>

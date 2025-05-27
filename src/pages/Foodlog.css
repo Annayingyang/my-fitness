@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+/* General Page Style */
+body {
+  background-color: #F9F4E9;
+  font-family: 'Segoe UI', sans-serif;
+  color: #20312B;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  color: #20312B;
+  margin-top: 1rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+/* Container */
+.foodlog-container {
+  padding-bottom: 3rem;
+}
+
+/* Buttons */
+button {
+  background-color: #B99A5E;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 12px;
+  margin: 1rem auto 2rem auto;
+  display: block;
+  transition: background 0.3s ease, transform 0.1s ease;
+  cursor: pointer;
+  width: fit-content;
+}
+
+button:hover {
+  background-color: #a4854d;
+}
+
+button:active {
+  transform: scale(0.97);
+  background-color: #8f7241;
+}
+
+/* Forms */
+form,
+.section-card {
+  background-color: #FCF9F4;
+  max-width: 600px;
+  margin: 1.5rem auto;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+form input,
+form select {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #d4cfc2;
+  background-color: #fff;
+  transition: border-color 0.2s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #B99A5E;
+  outline: none;
+}
+
+/* Error and Success */
+.error {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Nutrition Summary and Date Picker */
+.nutrition-summary p,
+.date-picker label {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.date-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#select-date {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 260px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Meal History */
+.meal-block {
+  margin-top: 1rem;
+}
+
+.meal-block h4 {
+  font-size: 1.1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.meal-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meal-block li {
+  background: white;
+  margin: 0.4rem 0;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  animation: fadeIn 0.4s ease;
+}
+
+.meal-block li::before {
+  content: "🍽️ ";
+  margin-right: 0.5rem;
+}
+
+.meal-block li span {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  form,
+  .section-card {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  button {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  #select-date {
+    width: 100%;
+  }
+}
