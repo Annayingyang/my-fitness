@@ -16,11 +16,11 @@ export function GoalProvider({ children }) {
   };
 
  const markGoalComplete = (goalToComplete) => {
-  // Remove the goal from active goals
+  
   const updatedGoals = goals.filter(goal => goal.id !== goalToComplete.id);
   setGoals(updatedGoals);
 
-  // Only add to achievements if not already there
+  
   const alreadyAdded = achievements.find(g => g.id === goalToComplete.id);
   if (!alreadyAdded) {
     setAchievements([...achievements, goalToComplete]);
