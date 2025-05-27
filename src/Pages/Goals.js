@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { GoalContext } from '../context/GoalContext';
+import './Goals.css';
 
 function Goals() {
   const [goalType, setGoalType] = useState('fitness');
@@ -86,11 +87,15 @@ function Goals() {
     }
   }, [goals, markGoalComplete]);
 
+  const thisMonth = new Date().getMonth();
+  const thisMonthAchievements = achievements.filter(goal => new Date(goal.completedAt).getMonth() === thisMonth);
+  const pastAchievements = achievements.filter(goal => new Date(goal.completedAt).getMonth() !== thisMonth);
+
   return (
     <div>
       <h1>Set New Goal</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-label="Add new goal">
         <label>Goal Type:</label>
         <select
           value={goalType}
@@ -106,6 +111,7 @@ function Goals() {
             placeholder="e.g., Run 5km"
             value={goalText}
             onChange={(e) => setGoalText(e.target.value)}
+            aria-label="Fitness goal description"
           />
         )}
 
@@ -116,18 +122,21 @@ function Goals() {
               placeholder="Start weight (kg)"
               value={startWeight}
               onChange={(e) => setStartWeight(e.target.value)}
+              aria-label="Start weight"
             />
             <input
               type="number"
               placeholder="Current weight (kg)"
               value={currentWeight}
               onChange={(e) => setCurrentWeight(e.target.value)}
+              aria-label="Current weight"
             />
             <input
               type="number"
               placeholder="Target weight (kg)"
               value={targetWeight}
               onChange={(e) => setTargetWeight(e.target.value)}
+              aria-label="Target weight"
             />
           </>
         )}
@@ -135,18 +144,11 @@ function Goals() {
         <button type="submit">Add Goal</button>
       </form>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>}
+      {error && <p className="error">{error}</p>}
+      {success && <p className="success">{success}</p>}
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          gap: '20px',
-          marginTop: '30px',
-        }}
-      >
-        <div style={{ flex: 1 }}>
+      <div className="goal-columns">
+        <div>
           <h2>Weight Goals</h2>
           {goals.filter((goal) => goal.type === 'weight' && !goal.completed).length === 0 && (
             <p>No weight goals yet.</p>
@@ -161,14 +163,7 @@ function Goals() {
               );
 
               return (
-                <div
-                  key={goal.id}
-                  style={{
-                    border: '1px solid #ccc',
-                    padding: '10px',
-                    marginBottom: '10px',
-                  }}
-                >
+                <div key={goal.id} className="goal-card">
                   <p>Start: {goal.start}kg</p>
                   <p>Current: {goal.current}kg</p>
                   <p>Target: {goal.target}kg</p>
@@ -177,7 +172,6 @@ function Goals() {
                     <progress
                       value={progressPercent}
                       max="100"
-                      style={{ width: '100%' }}
                     ></progress>
                   </div>
 
@@ -193,7 +187,6 @@ function Goals() {
                         updateCurrentWeight(newCurrentWeight);
                         setNewCurrentWeight('');
                       }}
-                      style={{ marginLeft: '10px' }}
                     >
                       Update
                     </button>
@@ -203,7 +196,7 @@ function Goals() {
             })}
         </div>
 
-        <div style={{ flex: 1 }}>
+        <div>
           <h2>Fitness Goals</h2>
           {goals.filter((goal) => goal.type === 'fitness').length === 0 && (
             <p>No fitness goals yet.</p>
@@ -211,14 +204,7 @@ function Goals() {
           {goals
             .filter((goal) => goal.type === 'fitness')
             .map((goal) => (
-              <div
-                key={goal.id}
-                style={{
-                  border: '1px solid #ccc',
-                  padding: '10px',
-                  marginBottom: '10px',
-                }}
-              >
+              <div key={goal.id} className="goal-card">
                 <label>
                   <input
                     type="checkbox"
@@ -231,15 +217,26 @@ function Goals() {
         </div>
       </div>
 
-      <div style={{ marginTop: '40px' }}>
-        <h2>Achievements</h2>
-        {achievements.length === 0 && <p>No achievements yet.</p>}
+      <div className="achievements">
+        <h2>Achievements This Month</h2>
+        {thisMonthAchievements.length === 0 && <p>No achievements yet.</p>}
         <ul>
-          {achievements.map((goal) => (
+          {thisMonthAchievements.map((goal) => (
             <li key={goal.id}>
-              {goal.type === 'fitness'
-                ? `🏆 ${goal.text}`
-                : `⚖️ Reached ${goal.target}kg`} 
+              {goal.type === 'fitness' ? `🏆 ${goal.text}` : `⚖️ Reached ${goal.target}kg`} 
+              {goal.completedAt && (
+                <span style={{ color: 'gray', fontSize: '0.9em' }}> — {new Date(goal.completedAt).toLocaleDateString()}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        <h3>Past Achievements</h3>
+        {pastAchievements.length === 0 && <p>No previous achievements.</p>}
+        <ul>
+          {pastAchievements.map((goal) => (
+            <li key={goal.id}>
+              {goal.type === 'fitness' ? `🏆 ${goal.text}` : `⚖️ Reached ${goal.target}kg`} 
               {goal.completedAt && (
                 <span style={{ color: 'gray', fontSize: '0.9em' }}> — {new Date(goal.completedAt).toLocaleDateString()}</span>
               )}

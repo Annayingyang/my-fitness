@@ -43,15 +43,15 @@ export function GoalProvider({ children }) {
     }
   };
 
-  const updateCurrentWeight = (newWeight) => {
-    const updatedGoals = goals.map(goal => {
-      if (goal.type === 'weight') {
-        return { ...goal, current: parseFloat(newWeight) };
-      }
-      return goal;
-    });
-    setGoals(updatedGoals);
-  };
+ const updateCurrentWeight = (newWeight) => {
+  const updatedGoals = goals.map(goal => {
+    if (goal.type === 'weight' && !goal.completed) {
+      return { ...goal, current: parseFloat(newWeight) };
+    }
+    return goal;
+  });
+  setGoals(updatedGoals);
+};
 
   return (
     <GoalContext.Provider

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+/* Base & Typography */
+body {
+  background-color: #F9F4E9;
+  font-family: 'Segoe UI', sans-serif;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 2rem 0 1rem;
+}
+
+/* Forms*/
+form {
+  background-color: #FCF9F4;
+  padding: 1.5rem;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+label {
+  font-weight: bold;
+  margin-top: 1rem;
+  display: block;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+select {
+  background-color: #fff;
+}
+
+/* Buttons*/
+button:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease-in-out;
+}
+
+button {
+  background-color: #B99A5E;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: #a68650;
+  outline: none;
+}
+
+/* Feedback Messages */
+.error, .success {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+/*Goal Columns*/
+.goal-columns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 3rem auto;
+}
+
+@media screen and (min-width: 768px) {
+  .goal-columns {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+}
+
+/* Goal Cards*/
+.goal-card {
+  background-color: #FCF9F4;
+  border: 1px solid #E1DED8;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 280px;
+  text-align: left;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+}
+
+.goal-card input[type="number"] {
+  width: calc(100% - 110px);
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.goal-card button {
+  width: 90px;
+  display: inline-block;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Progress Bar*/
+
+progress {
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #B99A5E;
+  border-radius: 10px;
+}
+
+/*Achievements*/
+
+.achievements {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 1rem;
+  background-color: #FCF9F4;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievements li {
+  background-color: #F9F4E9;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e4e0d7;
+}
