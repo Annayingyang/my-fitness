@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { GoalContext } from '../context/GoalContext';
+import { Link } from 'react-router-dom';
 import './Goals.css';
 
 function Goals() {
@@ -231,18 +232,14 @@ function Goals() {
           ))}
         </ul>
 
-        <h3>Past Achievements</h3>
-        {pastAchievements.length === 0 && <p>No previous achievements.</p>}
-        <ul>
-          {pastAchievements.map((goal) => (
-            <li key={goal.id}>
-              {goal.type === 'fitness' ? `🏆 ${goal.text}` : `⚖️ Reached ${goal.target}kg`} 
-              {goal.completedAt && (
-                <span style={{ color: 'gray', fontSize: '0.9em' }}> — {new Date(goal.completedAt).toLocaleDateString()}</span>
-              )}
-            </li>
+        <h3>View Other Months</h3>
+        <div className="month-links">
+          {[...Array(12)].map((_, idx) => (
+            <Link key={idx} to={`/achievements/${idx}`}>
+              {new Date(0, idx).toLocaleString('default', { month: 'long' })}
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

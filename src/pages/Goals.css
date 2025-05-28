@@ -173,3 +173,29 @@ progress::-webkit-progress-value {
   border-radius: 8px;
   border: 1px solid #e4e0d7;
 }
+
+
+.month-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.month-links a {
+  background-color: #FCF9F4;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #20312B;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.month-links a:hover {
+  background-color: #e8dfcb;
+  transform: translateY(-2px);
+}
+
