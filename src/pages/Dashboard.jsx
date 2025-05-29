@@ -5,7 +5,7 @@ import { GoalContext } from '../context/GoalContext';
 import { WorkoutContext } from '../context/WorkoutContext';
 import { ProfileContext } from '../context/ProfileContext';
 import { motion } from 'framer-motion';
-import './Dashboard.css';
+import '../Styling/Dashboard.css';
 
 function Dashboard() {
   const { meals } = useContext(FoodContext);

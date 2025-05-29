@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { FoodContext } from '../context/FoodContext';
-import './Foodlog.css';
+import '../Styling/Foodlog.css';
 
 const defaultFoodDB = {
   bread: 100,

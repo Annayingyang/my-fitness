@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { GoalContext } from '../context/GoalContext';
 import { Link } from 'react-router-dom';
-import './Goals.css';
+import '../Styling/Goals.css';
 
 function Goals() {
   const [goalType, setGoalType] = useState('fitness');

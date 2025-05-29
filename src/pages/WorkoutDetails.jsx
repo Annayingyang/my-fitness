@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { WorkoutContext } from '../context/WorkoutContext';
-import './WorkoutDetails.css';
+import '../Styling/WorkoutDetails.css';
 
 const workoutVideos = {
   1: 'https://www.youtube.com/embed/2tM1LFFxeKg', // Push Day

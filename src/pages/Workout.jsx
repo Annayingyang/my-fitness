@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Workout.css';
+import '../Styling/Workout.css';
 
 function Workout() {
   const workouts = [

@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { ProfileContext } from '../context/ProfileContext';
-import './Profile.css'; // optional styling
+import '../Styling/Profile.css'; 
 
 function Profile() {
   const { user, setUser, removeUser } = useContext(ProfileContext);
