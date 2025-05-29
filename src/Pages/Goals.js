@@ -90,7 +90,7 @@ function Goals() {
 
   const thisMonth = new Date().getMonth();
   const thisMonthAchievements = achievements.filter(goal => new Date(goal.completedAt).getMonth() === thisMonth);
-  const pastAchievements = achievements.filter(goal => new Date(goal.completedAt).getMonth() !== thisMonth);
+  
 
   return (
     <div>
