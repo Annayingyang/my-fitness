@@ -1,10 +1,12 @@
 import { useContext, useState, useEffect } from 'react';
 import { ProfileContext } from '../context/ProfileContext';
+import { GoalContext } from '../context/GoalContext';
 import { useNavigate } from 'react-router-dom';
 import '../Styling/Profile.css';
 
 function Profile() {
   const { user, setUser, removeUser } = useContext(ProfileContext);
+  const { updateCurrentWeight } = useContext(GoalContext);
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -46,13 +48,18 @@ function Profile() {
     const updatedUser = { ...user, ...form };
     setUser(updatedUser);
 
-    // Update saved users in localStorage
+    // Update registered users in localStorage
     const users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
     const updatedUsers = users.map(u =>
       u.username === user.username ? updatedUser : u
     );
     localStorage.setItem('registeredUsers', JSON.stringify(updatedUsers));
     localStorage.setItem('user', JSON.stringify(updatedUser));
+
+    // ✅ Sync weight to Goals
+    if (form.weight) {
+      updateCurrentWeight(form.weight);
+    }
   };
 
   const handleLogout = () => {

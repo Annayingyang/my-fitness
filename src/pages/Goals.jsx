@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { GoalContext } from '../context/GoalContext';
+import { ProfileContext } from '../context/ProfileContext';
 import { Link } from 'react-router-dom';
 import '../Styling/Goals.css';
 
@@ -20,6 +21,8 @@ function Goals() {
     updateCurrentWeight,
     achievements,
   } = useContext(GoalContext);
+
+  const { user, setUser } = useContext(ProfileContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -88,9 +91,29 @@ function Goals() {
     }
   }, [goals, markGoalComplete]);
 
+  const handleUpdateWeight = () => {
+    if (!newCurrentWeight || isNaN(newCurrentWeight)) {
+      setError('Please enter a valid weight.');
+      return;
+    }
+
+    updateCurrentWeight(newCurrentWeight);
+    setNewCurrentWeight('');
+
+    // ✅ Sync to ProfileContext and localStorage
+    const updatedUser = { ...user, weight: newCurrentWeight };
+    setUser(updatedUser);
+
+    const users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    const updatedUsers = users.map(u =>
+      u.username === user.username ? updatedUser : u
+    );
+    localStorage.setItem('registeredUsers', JSON.stringify(updatedUsers));
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+  };
+
   const thisMonth = new Date().getMonth();
   const thisMonthAchievements = achievements.filter(goal => new Date(goal.completedAt).getMonth() === thisMonth);
-  
 
   return (
     <div>
@@ -183,12 +206,7 @@ function Goals() {
                       value={newCurrentWeight}
                       onChange={(e) => setNewCurrentWeight(e.target.value)}
                     />
-                    <button
-                      onClick={() => {
-                        updateCurrentWeight(newCurrentWeight);
-                        setNewCurrentWeight('');
-                      }}
-                    >
+                    <button onClick={handleUpdateWeight}>
                       Update
                     </button>
                   </div>
