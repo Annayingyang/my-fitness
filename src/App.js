@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { ProfileContext } from './context/ProfileContext';
 import RequireAuth from './pages/RequireAuth';
+import './App.css';
 
 function App() {
   const { user, removeUser } = useContext(ProfileContext);
@@ -24,26 +25,56 @@ function App() {
 
   return (
     <div>
+      {/* Navigation Bar */}
       {isLoggedIn && (
-        <nav aria-label="Main Navigation">
-          <ul style={{ display: 'flex', listStyle: 'none', gap: '1rem', padding: 0 }}>
-            <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/food-log">Food Log</Link></li>
-            <li><Link to="/goals">Goals</Link></li>
-            <li><Link to="/workout">Workout</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
-            <li><button onClick={handleLogout}>Logout</button></li>
+        <nav className="custom-nav" aria-label="Main Navigation">
+          <ul className="nav-list">
+            <li className="nav-item">
+              <Link to="/dashboard">
+                <img src="/icons/dashboard.png" alt="Dashboard" />
+                <span>Dashboard</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/food-log">
+                <img src="/icons/foodlog.png" alt="Food Log" />
+                <span>Food Log</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/goals">
+                <img src="/icons/goal.png" alt="Goals" />
+                <span>Goals</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/workout">
+                <img src="/icons/workout.png" alt="Workout" />
+                <span>Workout</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile">
+                <img src="/icons/profile.png" alt="Profile" />
+                <span>Profile</span>
+              </Link>
+            </li>
           </ul>
+
+          {/* Logout button far right */}
+          <button className="logout-button" onClick={handleLogout}>
+            <img src="/icons/Logout.png" alt="Logout" />
+            <span>Logout</span>
+          </button>
         </nav>
       )}
 
+      {/* Routes */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/food-log" element={<FoodLog />} />
-
-        {/* Restricted routes */}
         <Route path="/goals" element={<RequireAuth><Goals /></RequireAuth>} />
         <Route path="/workout" element={<RequireAuth><Workout /></RequireAuth>} />
         <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />

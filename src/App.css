@@ -1,38 +1,126 @@
-.App {
-  text-align: center;
+/* Nav Container */
+.custom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FCF9F4;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 1100px;
+  margin: 2rem auto 0; /* aligns with your dashboard container */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Centered Icon Row */
+.nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Nav Link Items */
+.nav-item a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  color: #20312B;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-item a:hover {
+  transform: scale(1.1);
+  color: #3a6b34;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #e0e7dc;
+  padding: 6px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.nav-item a:hover img {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+}
+
+.nav-item span {
+  margin-top: 6px;
+}
+
+/* Logout button styled exactly like nav items */
+.logout-button {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: #20312B;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.logout-button img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #e0e7dc;
+  padding: 6px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.logout-button:hover {
+  transform: scale(1.1);
+  color: #3a6b34;
+}
+
+.logout-button:hover img {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+}
+
+.logout-button span {
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .custom-nav {
+    padding: 0.8rem 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav-inner {
+    max-width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .nav-list {
+    gap: 1.2rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .nav-item img,
+  .logout-button img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .nav-item span,
+  .logout-button span {
+    font-size: 0.75rem;
   }
 }
+
