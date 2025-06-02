@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Goals from './pages/Goals';
 import Workout from './pages/Workout';
@@ -13,20 +14,44 @@ import { ProfileContext } from './context/ProfileContext';
 import RequireAuth from './pages/RequireAuth';
 import './App.css';
 
+
+
 function App() {
   const { user, removeUser } = useContext(ProfileContext);
-  const isLoggedIn = !!user;
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === '/' || location.pathname === '/register';
 
   const handleLogout = () => {
     removeUser();
     navigate('/');
   };
 
+  const isMissingInfo = user && (!user.name || !user.weight || user.weight === '');
+const needsProfileUpdate = !isLoginPage && isMissingInfo;
+
+const [showToast, setShowToast] = useState(false);
+
+useEffect(() => {
+  if (needsProfileUpdate) {
+    setShowToast(true);
+    const timer = setTimeout(() => setShowToast(false), 4000); // auto-dismiss
+    return () => clearTimeout(timer);
+  }
+}, [needsProfileUpdate]);
+
+
   return (
     <div>
-      {/* Navigation Bar */}
-      {isLoggedIn && (
+      {showToast && (
+      <div className="profile-toast">
+        ⚠️ Tap Profile to complete your info!
+      </div>
+    )}
+    
+      {/*  Show nav um for the user not login */}
+      {!isLoginPage && user && (
         <nav className="custom-nav" aria-label="Main Navigation">
           <ul className="nav-list">
             <li className="nav-item">
@@ -53,17 +78,17 @@ function App() {
                 <span>Workout</span>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/profile">
-                <img src="/icons/profile.png" alt="Profile" />
-                <span>Profile</span>
-              </Link>
-            </li>
+            <li className={`nav-item ${needsProfileUpdate ? 'profile-alert' : ''}`}>
+  <Link to="/profile">
+    <img src="/icons/profile.png" alt="Profile" />
+    <span>Profile</span>
+  </Link>
+</li>
           </ul>
 
-          {/* Logout button far right */}
+          {/* Logout far right */}
           <button className="logout-button" onClick={handleLogout}>
-            <img src="/icons/Logout.png" alt="Logout" />
+            <img src="/icons/logout.png" alt="Logout" />
             <span>Logout</span>
           </button>
         </nav>
