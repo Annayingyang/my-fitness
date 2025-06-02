@@ -5,6 +5,8 @@ import { GoalContext } from '../context/GoalContext';
 import { WorkoutContext } from '../context/WorkoutContext';
 import { ProfileContext } from '../context/ProfileContext';
 import { motion } from 'framer-motion';
+import PandaLoading from '../components/PandaLoading';
+
 import {
   BarChart,
   Bar,
@@ -25,10 +27,14 @@ function Dashboard() {
   const { user } = useContext(ProfileContext);
 
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 800);
-    return () => clearTimeout(timer);
-  }, []);
+
+useEffect(() => {
+  const timer = setTimeout(() => setLoading(false), 1500);
+  return () => clearTimeout(timer);
+}, []);
+
+if (loading) return <PandaLoading />;
+
 
   const today = new Date().toLocaleDateString('en-CA');
   const todayMeals = meals.filter((m) => m.date === today);

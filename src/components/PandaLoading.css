@@ -1,0 +1,24 @@
+.panda-loader-wrapper {
+  height: 100vh;
+  background-color: #F9F4E9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  color: #20312B;
+  animation: fadeIn 0.5s ease;
+  text-align: center;
+  padding: 2rem;
+}
+
+.panda-img {
+  max-width: 180px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.panda-loader-wrapper p {
+  font-size: 1.25rem;
+  font-weight: 600;
+}

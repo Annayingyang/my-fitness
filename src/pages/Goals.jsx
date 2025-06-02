@@ -100,7 +100,7 @@ function Goals() {
     updateCurrentWeight(newCurrentWeight);
     setNewCurrentWeight('');
 
-    // ✅ Sync to ProfileContext and localStorage
+    // Sync to ProfileContext and localStorage
     const updatedUser = { ...user, weight: newCurrentWeight };
     setUser(updatedUser);
 
