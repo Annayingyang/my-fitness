@@ -90,3 +90,18 @@ progress::-webkit-progress-value {
   background-color: #B99A5E;
   border-radius: 8px;
 }
+
+.dashboard-chart {
+  background-color: #FCF9F4;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-chart h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: #B99A5E;
+  margin-bottom: 1rem;
+}

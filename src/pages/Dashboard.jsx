@@ -5,11 +5,22 @@ import { GoalContext } from '../context/GoalContext';
 import { WorkoutContext } from '../context/WorkoutContext';
 import { ProfileContext } from '../context/ProfileContext';
 import { motion } from 'framer-motion';
+import {
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer
+} from 'recharts';
 import '../Styling/Dashboard.css';
 
 function Dashboard() {
   const { meals } = useContext(FoodContext);
-  const { goals, achievements } = useContext(GoalContext);
+  const { goals, achievements, weightHistory } = useContext(GoalContext);
   const { workoutSessions } = useContext(WorkoutContext);
   const { user } = useContext(ProfileContext);
 
@@ -29,6 +40,24 @@ function Dashboard() {
     : null;
   const recentAchievement = achievements.length ? achievements[achievements.length - 1] : null;
   const totalSessions = Object.values(workoutSessions).reduce((sum, val) => sum + val, 0);
+
+  // Calories (last 7 days)
+  const last7Days = [...Array(7)].map((_, i) => {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    const dateStr = date.toLocaleDateString('en-CA');
+    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+    const dailyCalories = meals
+      .filter((m) => m.date === dateStr)
+      .reduce((sum, m) => sum + m.calories, 0);
+    return { name: dayName, calories: dailyCalories };
+  }).reverse();
+
+  // Format weight history for chart
+  const formattedWeights = weightHistory.map(entry => ({
+    date: new Date(entry.date).toLocaleDateString('en-CA'),
+    weight: entry.weight
+  }));
 
   if (loading) return <p style={{ textAlign: 'center', marginTop: '2rem' }}>Loading your dashboard...</p>;
 
@@ -98,6 +127,34 @@ function Dashboard() {
           <h2>💪 Workout Sessions</h2>
           <motion.p initial={{ scale: 0.8 }} animate={{ scale: 1 }}>{totalSessions} sessions completed</motion.p>
         </Link>
+      </div>
+
+      {/* Calorie Trend Chart */}
+      <div className="dashboard-chart">
+        <h2 style={{ textAlign: 'center' }}>Calorie Trend (Past 7 Days)</h2>
+        <ResponsiveContainer width="100%" height={250}>
+          <BarChart data={last7Days}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="calories" fill="#B99A5E" radius={[6, 6, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Weight Line Chart */}
+      <div className="dashboard-chart">
+        <h2 style={{ textAlign: 'center' }}>Weight Progress Over Time</h2>
+        <ResponsiveContainer width="100%" height={250}>
+          <LineChart data={formattedWeights}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Line type="monotone" dataKey="weight" stroke="#3a6b34" strokeWidth={2} />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
