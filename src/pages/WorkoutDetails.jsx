@@ -41,6 +41,7 @@ function WorkoutDetails() {
       <div className="session-info">
         <p><strong>Sessions Completed:</strong> {workoutSessions[workoutId] || 0}</p>
         <button onClick={() => incrementSession(workoutId)}>Mark as Completed</button>
+      
       </div>
     </div>
   );

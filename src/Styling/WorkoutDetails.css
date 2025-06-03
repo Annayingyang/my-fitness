@@ -1,4 +1,3 @@
-/* WorkoutDetails.css */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
 body {
@@ -9,31 +8,32 @@ body {
   padding: 0;
 }
 
-.workout-details-container {
-  max-width: 700px;
-  margin: 2rem auto;
+.workout-detail-container {
+  max-width: 900px;
+  margin: 3rem auto;
   padding: 2rem;
-  background-color: #FCF9F4;
-  border-radius: 16px;
+  background: #FCF9F4;
+  border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  text-align: center;
 }
 
-.workout-details-container h1 {
+.workout-title {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 2rem;
 }
 
+/* Resize & center the video */
 .video-wrapper {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  padding-top: 25px;
+  padding-bottom: 56.25%; /* 16:9 ratio */
   height: 0;
-  margin: 1.5rem 0;
-  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
 
 .video-wrapper iframe {
@@ -45,28 +45,44 @@ body {
   border: none;
 }
 
-.session-count {
-  font-size: 1.1rem;
-  margin-top: 1rem;
-  color: #555;
+/* Session Info Styling */
+.session-info {
+  text-align: center;
 }
 
-.complete-button {
-  margin-top: 1.5rem;
+.session-info p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Button Styling */
+.session-info button {
   background-color: #B99A5E;
   color: white;
   padding: 0.75rem 2rem;
   font-size: 1rem;
+  font-weight: bold;
   border: none;
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.1s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.complete-button:hover {
-  background-color: #a07f4a;
+.session-info button:hover {
+  background-color: #a8863f;
+  transform: scale(1.02);
 }
 
-.complete-button:active {
-  transform: scale(0.97);
+
+
+@media (max-width: 600px) {
+  .workout-title {
+    font-size: 1.5rem;
+  }
+
+  .session-info p {
+    font-size: 1rem;
+  }
 }
