@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { FoodContext } from '../context/FoodContext';
+import PandaLoading from '../components/PandaLoading'; // 👈 make sure this path is correct
 import '../Styling/Foodlog.css';
 
 const defaultFoodDB = {
@@ -16,10 +17,10 @@ function FoodLog() {
   const [calories, setCalories] = useState('');
   const [mealTime, setMealTime] = useState('breakfast');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [foodDB, setFoodDB] = useState(defaultFoodDB);
+  const [isPageLoading, setIsPageLoading] = useState(true); // 👈 new loading state
 
   const { meals, addMeal } = useContext(FoodContext);
 
@@ -31,9 +32,7 @@ function FoodLog() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    const timer = setTimeout(() => setIsPageLoading(false), 800); // 👈 loading duration
     return () => clearTimeout(timer);
   }, []);
 
@@ -89,6 +88,11 @@ function FoodLog() {
   const totalCalories = Object.values(selectedMeals).flat().reduce((sum, m) => sum + m.calories, 0);
   const totalMeals = Object.values(selectedMeals).flat().length;
 
+  // Loading screen return
+  if (isPageLoading) {
+    return <PandaLoading />;
+  }
+
   return (
     <div className="foodlog-container">
       <h1>Food Log</h1>
@@ -142,30 +146,26 @@ function FoodLog() {
         />
       </div>
 
-      {loading ? (
-        <p>Loading food history...</p>
-      ) : (
-        <div className="section-card meal-block">
-          <h3>{selectedDate}</h3>
-          {['breakfast', 'lunch', 'dinner', 'snack'].map((type) => (
-            selectedMeals[type].length > 0 && (
-              <div key={type}>
-                <h4>{type.charAt(0).toUpperCase() + type.slice(1)}</h4>
-                <ul>
-                  {selectedMeals[type].map((meal) => (
-                    <li key={meal.id}>
-                      {meal.name} — {meal.calories} kcal
-                      <span>
-                        ({new Date(meal.createdAt).toLocaleTimeString()})
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-          ))}
-        </div>
-      )}
+      <div className="section-card meal-block">
+        <h3>{selectedDate}</h3>
+        {['breakfast', 'lunch', 'dinner', 'snack'].map((type) => (
+          selectedMeals[type].length > 0 && (
+            <div key={type}>
+              <h4>{type.charAt(0).toUpperCase() + type.slice(1)}</h4>
+              <ul>
+                {selectedMeals[type].map((meal) => (
+                  <li key={meal.id}>
+                    {meal.name} — {meal.calories} kcal
+                    <span>
+                      ({new Date(meal.createdAt).toLocaleTimeString()})
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        ))}
+      </div>
     </div>
   );
 }

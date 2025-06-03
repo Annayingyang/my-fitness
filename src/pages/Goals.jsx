@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { GoalContext } from '../context/GoalContext';
 import { ProfileContext } from '../context/ProfileContext';
+
 import { Link } from 'react-router-dom';
 import '../Styling/Goals.css';
 

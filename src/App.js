@@ -47,6 +47,7 @@ useEffect(() => {
       {showToast && (
       <div className="profile-toast">
         ⚠️ Tap Profile to complete your info!
+        
       </div>
     )}
     

@@ -67,6 +67,20 @@ function Profile() {
     navigate('/');
   };
 
+  const handleProfileImageUpload = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const updatedUser = { ...user, profilePicture: reader.result };
+      setUser(updatedUser);
+      localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+    };
+    reader.readAsDataURL(file);
+  }
+};
+
+
   if (user?.isGuest) {
     return (
       <div className="profile-container">
@@ -79,11 +93,20 @@ function Profile() {
 
   return (
     <div className="profile-container">
-      <h1>{user ? `Welcome back, ${user.name}!` : 'Create Your Profile'}</h1>
-
-      {form.profilePicture && (
-        <img src={form.profilePicture} alt="Profile" className="profile-pic" />
-      )}
+      <label htmlFor="profile-upload">
+    <img
+      src={user.profilePicture || '/images/default-profile.png'}
+      alt="Profile"
+      className="profile-picture"
+    />
+  </label>
+  <input
+    type="file"
+    id="profile-upload"
+    accept="image/*"
+    onChange={handleProfileImageUpload}
+    style={{ display: 'none' }}
+  />
 
       <form onSubmit={handleSubmit} className="profile-form">
         <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
