@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import '../Styling/Register.css';
+
 
 function Register() {
   const [form, setForm] = useState({
@@ -45,7 +47,8 @@ function Register() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div className="register-wrapper">
+
       <h1>Register</h1>
       <form onSubmit={handleRegister}>
         <input

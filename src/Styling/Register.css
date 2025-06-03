@@ -1,0 +1,100 @@
+.register-wrapper {
+  max-width: 500px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #FCF9F4;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  font-family: 'Playfair Display', serif;
+  color: #20312B;
+  text-align: center;
+}
+
+.register-wrapper h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #3a6b34;
+}
+
+.register-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+
+.register-wrapper input[type="text"],
+.register-wrapper input[type="email"],
+.register-wrapper input[type="password"] {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #d9d4c8;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #20312B;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.register-wrapper input:focus {
+  outline: none;
+  border-color: #3a6b34;
+  box-shadow: 0 0 4px rgba(58, 107, 52, 0.3);
+}
+
+.register-wrapper label {
+  font-size: 0.95rem;
+  text-align: left;
+  color: #3a6b34;
+}
+
+.register-wrapper input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.1);
+}
+
+.register-wrapper button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #3a6b34;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.register-wrapper button:hover {
+  background-color: #2b4d27;
+}
+
+.register-wrapper p {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.register-wrapper a {
+  color: #3a6b34;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-wrapper a:hover {
+  text-decoration: underline;
+}
+
+.register-wrapper .error {
+  color: red;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.register-wrapper label {
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.register-wrapper button {
+  margin-top: 0.8rem;
+}

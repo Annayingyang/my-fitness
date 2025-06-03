@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ProfileContext } from '../context/ProfileContext';
+import '../Styling/Login.css';
+
 
 function Login() {
   const { setUser } = useContext(ProfileContext);
@@ -29,7 +31,16 @@ function Login() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+<div className="login-screen">
+  <img
+    src="/images/panda-login-bg.png"
+    alt=""
+    className="login-bg"
+    aria-hidden="true"
+  />
+    
+    <div className="login-wrapper">
+
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <input
@@ -57,6 +68,7 @@ function Login() {
 
       <button onClick={handleGuestLogin}>Continue as Guest</button>
     </div>
+   </div> 
   );
 }
 
