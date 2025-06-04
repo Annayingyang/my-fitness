@@ -32,8 +32,7 @@ function Login() {
 
   return (
 <div className="login-screen">
-  <img
-    src="/images/panda-login-bg.png"
+  <img src={`${process.env.PUBLIC_URL}/images/panda-login-bg.png`} 
     alt=""
     className="login-bg"
     aria-hidden="true"

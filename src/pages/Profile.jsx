@@ -95,10 +95,11 @@ function Profile() {
     <div className="profile-container">
       <label htmlFor="profile-upload">
     <img
-      src={user.profilePicture || '/images/default-profile.png'}
-      alt="Profile"
-      className="profile-picture"
-    />
+  src={user.profilePicture || `${process.env.PUBLIC_URL}/images/default-profile.png`}
+  alt="Profile"
+  className="profile-picture"
+/>
+
   </label>
   <input
     type="file"
