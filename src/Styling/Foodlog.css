@@ -187,3 +187,43 @@ form select:focus {
     width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-top: 1rem;
+  }
+
+  .foodlog-container {
+    padding: 1rem;
+  }
+
+  form,
+  .section-card {
+    padding: 1.2rem;
+    margin: 1.2rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  #select-date {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .meal-block li {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .meal-block li span {
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+}
+

@@ -64,3 +64,61 @@
   margin-top: 1.5rem;
 }
 
+/* 🌐 Tablets (≤768px) */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1.5rem;
+    margin: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .profile-form {
+    padding: 1.2rem;
+  }
+
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-form input,
+  .profile-form select {
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+}
+
+/* 📱 Phones (≤480px) */
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 1rem;
+    margin: 1.5rem 0.8rem;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .profile-form {
+    padding: 1rem;
+  }
+
+  .profile-form input,
+  .profile-form select {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .profile-picture-container {
+    margin-bottom: 0.8rem;
+  }
+
+  .profile-picture {
+    width: 90px;
+    height: 90px;
+    border-width: 3px;
+  }
+
+  .profile-summary {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+}
