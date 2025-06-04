@@ -92,7 +92,15 @@ function Profile() {
   }
 
   return (
-    <div className="profile-container">
+  <div
+    className="profile-container"
+    style={{
+      backgroundImage: `url(${process.env.PUBLIC_URL}/images/bambo-bg.png)`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+    }}
+  >
       <label htmlFor="profile-upload">
     <img
   src={user.profilePicture || `${process.env.PUBLIC_URL}/images/default-profile.png`}
