@@ -61,25 +61,25 @@ useEffect(() => {
             </li>
             <li className="nav-item">
               <Link to="/food-log">
-                <img src="/icons/foodlog.png" alt="Food Log" />
+                <img src={`${process.env.PUBLIC_URL}/icons/foodlog.png`} alt="Food Log" />
                 <span>Food Log</span>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/goals">
-                <img src="/icons/goal.png" alt="Goals" />
+                <img src={`${process.env.PUBLIC_URL}/icons/goal.png`} alt="Goals" />
                 <span>Goals</span>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/workout">
-                <img src="/icons/workout.png" alt="Workout" />
+                <img src={`${process.env.PUBLIC_URL}/icons/workout.png`} alt="Workout" />
                 <span>Workout</span>
               </Link>
             </li>
             <li className={`nav-item ${needsProfileUpdate ? 'profile-alert' : ''}`}>
   <Link to="/profile">
-    <img src="/icons/profile.png" alt="Profile" />
+    <img src={`${process.env.PUBLIC_URL}/icons/profile.png`} alt="Profile" />
     <span>Profile</span>
   </Link>
 </li>
@@ -87,7 +87,7 @@ useEffect(() => {
 
           {/* Logout far right */}
           <button className="logout-button" onClick={handleLogout}>
-            <img src="/icons/logout.png" alt="Logout" />
+            <img src={`${process.env.PUBLIC_URL}/icons/Logout.png`} alt="Logout" />
             <span>Logout</span>
           </button>
         </nav>
