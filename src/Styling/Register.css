@@ -1,35 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+/* Page container */
+.register-screen {
+  position: relative;
+  height: 100vh;
+  background-color: #f9f4e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    padding: 0 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/*  Hero background image */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* Register form card */
 .register-wrapper {
-  max-width: 500px;
-  margin: 4rem auto;
-  padding: 2rem;
+   max-height: 85vh;
+  position: relative;
+  z-index: 2;
   background-color: #FCF9F4;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
   font-family: 'Playfair Display', serif;
   color: #20312B;
-  text-align: center;
-}
-
-.register-wrapper h1 {
-  font-size: 2rem;
+  margin-top: 1.5rem;   
   margin-bottom: 1.5rem;
-  color: #3a6b34;
 }
 
+/*  Headline */
+.register-wrapper h1 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Form fields */
 .register-wrapper form {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
+  gap: 0.2rem;
 }
-
 
 .register-wrapper input[type="text"],
 .register-wrapper input[type="email"],
 .register-wrapper input[type="password"] {
-  padding: 0.8rem;
+  padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #d9d4c8;
+  border: 1px solid #d4cfc2;
   border-radius: 10px;
   background-color: #fff;
   color: #20312B;
@@ -42,35 +75,47 @@
   box-shadow: 0 0 4px rgba(58, 107, 52, 0.3);
 }
 
+/* Terms checkbox */
 .register-wrapper label {
   font-size: 0.95rem;
+  font-family: 'Segoe UI', sans-serif;
   text-align: left;
-  color: #3a6b34;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
-.register-wrapper input[type="checkbox"] {
-  margin-right: 8px;
-  transform: scale(1.1);
-}
-
+/*  Submit button */
 .register-wrapper button {
-  padding: 0.8rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
   background-color: #3a6b34;
   color: #fff;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 0.2rem;
 }
 
 .register-wrapper button:hover {
   background-color: #2b4d27;
 }
 
+/*  Error styling */
+.register-wrapper .error {
+  color: red;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Login link */
 .register-wrapper p {
   margin-top: 1.5rem;
   font-size: 0.95rem;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .register-wrapper a {
@@ -83,18 +128,18 @@
   text-decoration: underline;
 }
 
-.register-wrapper .error {
-  color: red;
-  margin-top: 1rem;
-  font-weight: bold;
-}
+/*  Responsive layout */
+@media (max-width: 480px) {
+  .register-wrapper {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
 
-.register-wrapper label {
-  margin-top: 0.5rem;
-  margin-bottom: 0.3rem;
-  font-size: 0.9rem;
-}
+  .register-wrapper h1 {
+    font-size: 1.8rem;
+  }
 
-.register-wrapper button {
-  margin-top: 0.8rem;
+  .register-wrapper input {
+    font-size: 0.95rem;
+  }
 }

@@ -47,6 +47,16 @@ function Register() {
   };
 
   return (
+
+    <div className="register-screen">
+  <div
+    className="hero-bg"
+    style={{
+      backgroundImage: `url(${process.env.PUBLIC_URL}/images/pandas-hero.png)`
+    }}
+    aria-hidden="true"
+  />
+
     <div className="register-wrapper">
 
       <h1>Register</h1>
@@ -104,6 +114,7 @@ function Register() {
       <p>
         Already have an account? <Link to="/">Login</Link>
       </p>
+    </div>
     </div>
   );
 }
