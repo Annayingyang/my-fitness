@@ -118,14 +118,17 @@ h1 {
 .card-info h2 {
   font-family: 'Playfair Display', serif;
   margin: 0;
+  font-weight: 700;
   font-size: 1.4rem;
    color: #ffffff;
+    -webkit-text-stroke: 0.5px #000000
+    
 }
 
 .card-info p {
   font-size: 0.95rem;
   margin-top: 0.25rem;
-  color: #ddd;
+  color: #ffffff;
 }
 
 /* Mobile tweak */

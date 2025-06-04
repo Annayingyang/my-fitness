@@ -6,7 +6,11 @@ import '../Styling/WorkoutDetails.css';
 const workoutVideos = {
   1: 'https://www.youtube.com/embed/2tM1LFFxeKg', // Push Day
   2: 'https://www.youtube.com/embed/dKpRSLe1j8g', // Leg Day
-  3: 'https://www.youtube.com/embed/ml6cT4AZdqI'  // Cardio HIIT
+  3: 'https://www.youtube.com/embed/ml6cT4AZdqI',
+  4: 'https: //www.youtube.com/embed/5rH80qK0Z9A', 
+  5: 'https://www.youtube.com/embed/307L83072lY', 
+  6: 'https://www.youtube.com/embed/4227Z69yL5g', 
+ 
 };
 
 function WorkoutDetails() {
@@ -17,9 +21,13 @@ function WorkoutDetails() {
   const videoUrl = workoutVideos[workoutId];
 
   const titles = {
-    1: 'Push Day Strength Routine',
-    2: 'Leg Day Sculpting Power',
-    3: 'Explosive Cardio HIIT'
+    1: 'Mobility Flow',
+    2: 'Extreme Lower Body',
+    3: ' Full Body',
+    4: 'Power Sculpt Abs',
+    5: 'HIIT BURN',
+    6: 'Upper Body'
+    
   };
 
   return (
