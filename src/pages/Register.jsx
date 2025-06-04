@@ -97,14 +97,16 @@ function Register() {
           required
         /><br />
 
-        <label>
-          <input
-            type="checkbox"
-            name="acceptTerms"
-            checked={form.acceptTerms}
-            onChange={handleChange}
-          /> I accept the terms and conditions
-        </label><br />
+      <div className="terms-row">
+  <input
+    type="checkbox"
+    name="acceptTerms"
+    checked={form.acceptTerms}
+    onChange={handleChange}
+  />
+  <label htmlFor="acceptTerms">I accept the terms and conditions</label>
+</div>
+
 
         <button type="submit">Register</button>
       </form>
