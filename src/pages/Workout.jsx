@@ -22,7 +22,7 @@ function Workout() {
       image: `${process.env.PUBLIC_URL}/images/workout1.png`,
 
       kcal: 345,
-      duration: '30 min'
+      duration: '25 min'
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ function Workout() {
       image: `${process.env.PUBLIC_URL}/images/workout2.png`,
 
       kcal: 295,
-      duration: '30 min'
+      duration: '20 min'
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ function Workout() {
       image: `${process.env.PUBLIC_URL}/images/workout3.png`,
 
       kcal: 289,
-      duration: '42 min'
+      duration: '30 min'
     },
     {
       id: 4,
@@ -49,7 +49,7 @@ function Workout() {
       image: `${process.env.PUBLIC_URL}/images/workout4.png`,
 
       kcal: 345,
-      duration: '30 min'
+      duration: '40 min'
     },
     {
       id: 5,
@@ -58,7 +58,7 @@ function Workout() {
       image: `${process.env.PUBLIC_URL}/images/workout5.png`,
 
       kcal: 427,
-      duration: '56 min'
+      duration: '30 min'
     },
     {
       id: 6,
@@ -66,8 +66,8 @@ function Workout() {
       type: 'Workout',
       image: `${process.env.PUBLIC_URL}/images/workout6.png`,
 
-      kcal: 427,
-      duration: '56 min'
+      kcal: 200,
+      duration: '15 min'
     },
   ];
 

@@ -4,14 +4,14 @@ import { WorkoutContext } from '../context/WorkoutContext';
 import '../Styling/WorkoutDetails.css';
 
 const workoutVideos = {
-  1: 'https://www.youtube.com/embed/2tM1LFFxeKg', // Push Day
-  2: 'https://www.youtube.com/embed/dKpRSLe1j8g', // Leg Day
-  3: 'https://www.youtube.com/embed/ml6cT4AZdqI',
-  4: 'https: //www.youtube.com/embed/5rH80qK0Z9A', 
-  5: 'https://www.youtube.com/embed/307L83072lY', 
-  6: 'https://www.youtube.com/embed/4227Z69yL5g', 
- 
+  1: 'https://www.youtube.com/embed/Eml2xnoLpYE', // Push Day
+  2: 'https://www.youtube.com/embed/Yx0BW-H5W0Y', // Leg Day
+  3: 'https://www.youtube.com/embed/4iy4yEKa7W8',
+  4: 'https://www.youtube.com/embed/gDIbf555o4k',
+  5: 'https://www.youtube.com/embed/M0uO8X3_tEA',
+  6: 'https://www.youtube.com/embed/0zhvUV1bAVQ',
 };
+
 
 function WorkoutDetails() {
   const { id } = useParams();
