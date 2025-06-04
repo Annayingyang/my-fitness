@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
-import { useEffect, useState } from 'react';
-import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Goals from './pages/Goals';
 import Workout from './pages/Workout';
@@ -15,8 +14,7 @@ import RequireAuth from './pages/RequireAuth';
 import './App.css';
 
 
-
-function App() {
+function AppContent() {
   const { user, removeUser } = useContext(ProfileContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -108,6 +106,14 @@ useEffect(() => {
         <Route path="/achievements/:month" element={<RequireAuth><AchievementsByMonth /></RequireAuth>} />
       </Routes>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter basename="/my-fitness">
+      <AppContent />
+    </BrowserRouter>
   );
 }
 
