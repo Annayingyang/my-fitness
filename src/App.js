@@ -55,7 +55,7 @@ useEffect(() => {
           <ul className="nav-list">
             <li className="nav-item">
               <Link to="/dashboard">
-                <img src="/icons/dashboard.png" alt="Dashboard" />
+                <img src={`${process.env.PUBLIC_URL}/icons/dashboard.png`} alt="Dashboard" />
                 <span>Dashboard</span>
               </Link>
             </li>
