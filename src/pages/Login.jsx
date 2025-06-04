@@ -31,12 +31,23 @@ function Login() {
   };
 
   return (
-<div className="login-screen">
-  <img src={`${process.env.PUBLIC_URL}/images/panda-login-bg.png`} 
-    alt=""
-    className="login-bg"
-    aria-hidden="true"
-  />
+  <div className="login-screen">
+    {/* Hero background — full page */}
+   <div
+  className="hero-bg"
+  style={{
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/pandas-hero.png)`
+  }}
+  aria-hidden="true"
+/>
+
+    {/* Decorative login image */}
+    <img
+      src={`${process.env.PUBLIC_URL}/images/panda-login-bg.png`}
+      alt=""
+      className="login-bg"
+      aria-hidden="true"
+    />
     
     <div className="login-wrapper">
 
