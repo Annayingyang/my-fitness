@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/my-fitness/static/css/main.b7cf80bd.css",
-    "main.js": "/my-fitness/static/js/main.388762a8.js",
+    "main.css": "/my-fitness/static/css/main.74cbd074.css",
+    "main.js": "/my-fitness/static/js/main.deaa3f6e.js",
     "index.html": "/my-fitness/index.html",
-    "main.b7cf80bd.css.map": "/my-fitness/static/css/main.b7cf80bd.css.map",
-    "main.388762a8.js.map": "/my-fitness/static/js/main.388762a8.js.map"
+    "main.74cbd074.css.map": "/my-fitness/static/css/main.74cbd074.css.map",
+    "main.deaa3f6e.js.map": "/my-fitness/static/js/main.deaa3f6e.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7cf80bd.css",
-    "static/js/main.388762a8.js"
+    "static/css/main.74cbd074.css",
+    "static/js/main.deaa3f6e.js"
   ]
 }
