@@ -65,3 +65,54 @@
 .achievements-wrapper a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .achievements-wrapper {
+    padding: 1.5rem;
+    margin: 1.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .achievements-wrapper h1 {
+    font-size: 1.6rem;
+  }
+
+  .achievements-wrapper li {
+    font-size: 0.95rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .achievements-wrapper li span {
+    font-size: 0.85rem;
+  }
+
+  .achievements-wrapper a {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements-wrapper {
+    padding: 1.2rem;
+    margin: 1rem 0.8rem;
+    border-radius: 12px;
+  }
+
+  .achievements-wrapper h1 {
+    font-size: 1.4rem;
+  }
+
+  .achievements-wrapper li {
+    font-size: 0.9rem;
+    padding: 0.8rem 0.9rem;
+  }
+
+  .achievements-wrapper li span {
+    font-size: 0.8rem;
+  }
+
+  .achievements-wrapper p,
+  .achievements-wrapper a {
+    font-size: 0.9rem;
+  }
+}
