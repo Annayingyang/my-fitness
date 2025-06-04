@@ -236,9 +236,10 @@ html, body {
   transition: all 0.3s ease;
 }
 
-/* Optional hover effect for fun */
+
 .site-footer:hover {
   background-color: #f2ede0;
 }
+
 
 
