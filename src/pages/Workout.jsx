@@ -1,7 +1,19 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import PandaLoading from '../components/PandaLoading';
 import '../Styling/Workout.css';
 
 function Workout() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <PandaLoading />;
+
+
   const workouts = [
     {
       id: 1,
