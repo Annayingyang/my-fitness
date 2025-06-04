@@ -7,7 +7,8 @@ function Workout() {
       id: 1,
       name: 'Mobility Flow',
       type: 'Challenge',
-      image: '/images/workout1.png',
+      image: `${process.env.PUBLIC_URL}/images/workout1.png`,
+
       kcal: 345,
       duration: '30 min'
     },
@@ -15,7 +16,8 @@ function Workout() {
       id: 2,
       name: 'Extreme Lower Body',
       type: 'Challenge',
-      image: '/images/workout2.png',
+      image: `${process.env.PUBLIC_URL}/images/workout2.png`,
+
       kcal: 295,
       duration: '30 min'
     },
@@ -23,7 +25,8 @@ function Workout() {
       id: 3,
       name: 'Full Body',
       type: 'Workout',
-      image: '/images/workout3.png',
+      image: `${process.env.PUBLIC_URL}/images/workout3.png`,
+
       kcal: 289,
       duration: '42 min'
     },
@@ -31,7 +34,8 @@ function Workout() {
       id: 4,
       name: 'Power Sculpt',
       type: 'Challenge',
-      image: '/images/workout4.png',
+      image: `${process.env.PUBLIC_URL}/images/workout4.png`,
+
       kcal: 345,
       duration: '30 min'
     },
@@ -39,7 +43,8 @@ function Workout() {
       id: 5,
       name: 'HIIT Burn',
       type: 'Workout',
-      image: '/images/workout5.png',
+      image: `${process.env.PUBLIC_URL}/images/workout5.png`,
+
       kcal: 427,
       duration: '56 min'
     },
@@ -47,7 +52,8 @@ function Workout() {
       id: 6,
       name: 'Upper Body',
       type: 'Workout',
-      image: '/images/workout6.png',
+      image: `${process.env.PUBLIC_URL}/images/workout1.png`,
+
       kcal: 427,
       duration: '56 min'
     },
