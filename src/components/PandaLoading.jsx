@@ -4,8 +4,7 @@ import './PandaLoading.css';
 function PandaLoading() {
   return (
     <div className="panda-loader-wrapper">
-      <img
-        src="/images/panda-loading.gif"
+      <img src={`${process.env.PUBLIC_URL}/images/panda-loading.gif`}
         alt="Loading Panda"
         className="panda-img"
       />
