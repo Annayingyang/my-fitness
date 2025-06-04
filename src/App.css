@@ -1,7 +1,7 @@
 /* Nav Container */
 html, body {
   max-width: 100%;
-  overflow-x: hidden; /* ✅ No horizontal scroll */
+  overflow-x: hidden; 
 }
 
 .custom-nav {
@@ -13,7 +13,7 @@ html, body {
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   max-width: 1100px;
-  margin: 2rem auto 0; /* aligns with your dashboard container */
+  margin: 2rem auto 0; 
 }
 
 /* Centered Icon Row */
@@ -26,10 +26,10 @@ html, body {
   margin: 0;
   padding: 0;
   flex-grow: 1;
-  flex-wrap: nowrap;            /* ✅ Stay in one row */
-  overflow-x: hidden;           /* ✅ Prevent accidental scroll */
-  scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* IE 10+ */
+  flex-wrap: nowrap;           
+  overflow-x: hidden;          
+  scrollbar-width: none;        
+  -ms-overflow-style: none;     
 }
 
 /* Nav Link Items */
@@ -67,7 +67,7 @@ html, body {
   margin-top: 6px;
 }
 
-/* Logout button styled exactly like nav items */
+/* Logout button */
 .logout-button {
   background: none;
   border: none;
@@ -214,9 +214,7 @@ html, body {
     font-size: 0.75rem;
   }
 
-  .logout-button {
-    margin-top: 1rem;
-  }
+  
 
   .profile-toast {
     font-size: 0.85rem;

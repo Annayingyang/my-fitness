@@ -83,15 +83,15 @@ useEffect(() => {
     <span>Profile</span>
   </Link>
 </li>
-          </ul>
-
-          {/* Logout far right */}
-          <button className="logout-button" onClick={handleLogout}>
-            <img src={`${process.env.PUBLIC_URL}/icons/Logout.png`} alt="Logout" />
-            <span>Logout</span>
-          </button>
-        </nav>
-      )}
+         <li className="nav-item">
+      <button className="logout-button" onClick={handleLogout}>
+        <img src={`${process.env.PUBLIC_URL}/icons/Logout.png`} alt="Logout" />
+        <span>Logout</span>
+      </button>
+    </li>
+  </ul>
+</nav> 
+)}
 
       {/* Routes */}
       <Routes>
