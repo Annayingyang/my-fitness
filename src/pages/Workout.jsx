@@ -64,7 +64,7 @@ function Workout() {
       id: 6,
       name: 'Upper Body',
       type: 'Workout',
-      image: `${process.env.PUBLIC_URL}/images/workout1.png`,
+      image: `${process.env.PUBLIC_URL}/images/workout6.png`,
 
       kcal: 427,
       duration: '56 min'
