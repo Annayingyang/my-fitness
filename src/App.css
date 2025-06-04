@@ -222,3 +222,23 @@ html, body {
   }
 }
 
+
+.site-footer {
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 0.9rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #20312B;
+  background-color: #f9f4e9;
+  border-top: 1px solid #e0d8c5;
+  margin-top: 2rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+/* Optional hover effect for fun */
+.site-footer:hover {
+  background-color: #f2ede0;
+}
+
+

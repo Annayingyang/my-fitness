@@ -105,7 +105,12 @@ useEffect(() => {
         <Route path="/workout/:id" element={<RequireAuth><WorkoutDetails /></RequireAuth>} />
         <Route path="/achievements/:month" element={<RequireAuth><AchievementsByMonth /></RequireAuth>} />
       </Routes>
-    </div>
+   {!isLoginPage && (
+  <footer className="site-footer">
+    <p>© 2025 PandaFit. All rights reserved.</p>
+  </footer>
+)}
+  </div>
   );
 }
 
