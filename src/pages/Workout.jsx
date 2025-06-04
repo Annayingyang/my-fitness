@@ -5,6 +5,7 @@ import '../Styling/Workout.css';
 
 function Workout() {
   const [loading, setLoading] = useState(true);
+   const [selectedType, setSelectedType] = useState('All');
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -74,8 +75,28 @@ function Workout() {
   return (
     <div className="workout-page">
       <h1> Workouts for You</h1>
+
+
+       {/* Filter Dropdown */}
+      <div className="filter-wrapper">
+  <select
+    value={selectedType}
+    onChange={(e) => setSelectedType(e.target.value)}
+    className="filter-select"
+  >
+    <option value="All">All</option>
+    <option value="Workout">Workout</option>
+    <option value="Challenge">Challenge</option>
+  </select>
+</div>
+
+
+
+
+
       <div className="workout-grid">
-        {workouts.map(workout => (
+        {(selectedType === 'All' ? workouts : workouts.filter(w => w.type === selectedType)).map(workout => (
+
           <Link to={`/workout/${workout.id}`} key={workout.id} className="workout-card">
             <div className="card-img" style={{ backgroundImage: `url(${workout.image})` }}>
               <div className="card-type">{workout.type}</div>

@@ -141,3 +141,48 @@ h1 {
     font-size: 1.1rem;
   }
 }
+
+
+/*  Workout Filter Dropdown */
+
+.filter-wrapper {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+
+.filter-select {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #ffffff;
+  background-color: #B99A5E;         /* main gold */
+  border: 1px solid #a8854e;         /* matchy border */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  max-width: 220px;
+  width: 100%;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #3a6b34;
+  box-shadow: 0 0 6px rgba(58, 107, 52, 0.25); /* soft green glow */
+}
+
+.filter-select:hover {
+  background-color: #eadac0; 
+  color: #000000;
+}
+
+
+@media (max-width: 480px) {
+  .filter-select {
+    font-size: 0.9rem;
+    padding: 0.45rem 1rem;
+    max-width: 90%;
+  }
+}
+
